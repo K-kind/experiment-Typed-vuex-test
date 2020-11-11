@@ -15,8 +15,9 @@ declare module '@nuxt/types' {
 
 const axios: Plugin = ({ $axios }) => {
   $axios.onRequest(config => {
-    config.baseURL = 'http://katahira.co.jp/api'
-    config.withCredentials = true
+    // config.baseURL = 'http://katahira.co.jp/api'
+    config.baseURL = 'http://localhost:3000'
+    // config.withCredentials = true
     return config
   })
 }

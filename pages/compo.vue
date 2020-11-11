@@ -5,9 +5,9 @@
       <p>アドレス: {{ user.email }}</p>
     </template>
     <template v-else>
-      <input type="text" placeholder="email" v-model="form.email">
-      <input type="text" placeholder="password" v-model="form.password">
-      <button @click="login">ログイン</button>
+      <o-input type="text" placeholder="email" v-model="form.email" />
+      <o-input type="text" placeholder="password" v-model="form.password" />
+      <o-button @click="login">ログイン</o-button>
     </template>
   </div>
 </template>

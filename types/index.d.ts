@@ -11,3 +11,5 @@ declare module '@nuxt/types' {
     $accessor: typeof accessorType
   }
 }
+
+declare module 'my-library/*';

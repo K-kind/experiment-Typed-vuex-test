@@ -30,8 +30,12 @@ export default Vue.extend({
     }
   },
   methods: {
-    async login() {
-      await this.$accessor.user.login(this.form)
+    login() {
+      // await this.$accessor.user.login(this.form)
+      this.$axios.post('/v1/auth/sign_in', this.form)
+        .then((response) => {
+          console.log(response)
+        })
     }
   }
 })
