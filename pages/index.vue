@@ -8,6 +8,12 @@
       <input type="text" placeholder="email" v-model="form.email">
       <input type="text" placeholder="password" v-model="form.password">
       <button @click="login">ログイン</button>
+      <o-button loading>ボタン</o-button>
+      <o-button icon="material-icons stop">
+      </o-button>
+      <o-button icon="el-icon-eleme">
+      </o-button>
+      <i class="material-icons stop"></i>
     </template>
   </div>
 </template>
