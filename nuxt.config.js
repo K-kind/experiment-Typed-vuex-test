@@ -29,7 +29,8 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '@/plugins/axios',
-    '@/plugins/my-library'
+    '@/plugins/my-library',
+    '@/plugins/vee-validate',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -47,6 +48,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -55,7 +57,25 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     transpile: [
-      /typed-vuex/
+      /typed-vuex/,
+      'vee-validate/dist/rules',
     ]
-  }
+  },
+  auth: {
+    redirect: {
+      login: '/',   // 未ログイン時に認証ルートへアクセスした際のリダイレクトURL
+      logout: '/',  // ログアウト時のリダイレクトURL
+      callback: false,   // Oauth認証等で必要となる コールバックルート
+      home: '/test',         // ログイン後のリダイレクトURL
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/v1/auth', method: 'post', propertyName: 'token' },
+          user: { url: '/v1/me', method: 'get', propertyName: false},
+          logout: false
+        },
+      }
+    }
+  },
 }

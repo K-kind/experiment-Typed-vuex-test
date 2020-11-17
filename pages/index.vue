@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <button @click="fetch">ボタン</button>
     <template v-if="user">
       <p>ユーザー名: {{ user.name }}</p>
       <p>アドレス: {{ user.email }}</p>
@@ -37,8 +38,18 @@ export default Vue.extend({
   },
   methods: {
     login() {
-      // await this.$accessor.user.login(this.form)
-      this.$axios.post('/v1/auth/sign_in', this.form)
+      this.$auth.loginWith('local', { data: this.form })
+      // this.$axios.post('/v1/auth', this.form)
+      //   .then((response) => {
+      //     console.log(response)
+      //   })
+    },
+    fetch() {
+      this.$axios.get('/v1/me', {
+        headers: {
+          Authorization: 'Bearer 9877f51ec00ff4dbe21d75890f478a56bc167b2cffc6be2c075326d80a125b6404cae8769a9a11bdfde029788eea35ac034426b19bbe2f6862d18796df8b0f1b'
+        }
+      })
         .then((response) => {
           console.log(response)
         })
