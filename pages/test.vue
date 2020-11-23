@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>{{ user }}</h1>
-    <o-form :model="tableData[0]" ref="ruleForm" :rules="rules">
+    <o-form ref="ruleForm">
       <o-table :data="tableData">
         <o-table-column>
           <template v-slot="{ row }">
-            <o-form-item prop="email">
+            <o-form-item prop="email" :rules="rules.email">
               <o-input v-model="row.email" placeholder="メール" />
             </o-form-item>
           </template>
